@@ -22,8 +22,8 @@ export const LoginPage: React.FC = () => {
       : { email, password };
 
     try {
-    const response = await fetch(
-  `https://login-production-e7c7.up.railway.app/api/auth/${endpoint}`,
+const response = await fetch(
+  `https://login-production-e7c7.up.railway.app:8080/api/auth/${endpoint}`,
   {
     method: 'POST',
     headers: {
@@ -32,7 +32,7 @@ export const LoginPage: React.FC = () => {
     },
     body: JSON.stringify(payload),
   }
-);
+)
 
 
       const data = await response.json();
