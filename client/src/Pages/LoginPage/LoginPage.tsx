@@ -22,17 +22,18 @@ export const LoginPage: React.FC = () => {
       : { email, password };
 
     try {
-      const response = await fetch(
-        `http://localhost:5000/api/auth/${endpoint}`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept-Language': i18n.language,
-          },
-          body: JSON.stringify(payload),
-        }
-      );
+    const response = await fetch(
+  `https://login-production-e7c7.up.railway.app/api/auth/${endpoint}`,
+  {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept-Language': i18n.language,
+    },
+    body: JSON.stringify(payload),
+  }
+);
+
 
       const data = await response.json();
       if (response.ok) {
