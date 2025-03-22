@@ -14,16 +14,6 @@ export const LoginPage: React.FC = () => {
   const [isRegistering, setIsRegistering] = useState(false);
   const [feedbackMessage, setFeedbackMessage] = useState<string>('');
 
-  const testConnection = async () => {
-    try {
-      const response = await fetch('https://login-production-e7c7.up.railway.app/');
-      const text = await response.text();
-      alert(`Ответ сервера: ${text}`);
-    } catch (error) {
-      alert(`Ошибка: ${error}`);
-    }
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const endpoint = isRegistering ? 'register' : 'login';
@@ -61,8 +51,6 @@ export const LoginPage: React.FC = () => {
       <div className="LoginPage__container">
         <h2>{isRegistering ? t('login.title-reg') : t('login.title')}</h2>
         <p>{isRegistering ? t('login.subtitle-reg') : t('login.subtitle')}</p>
-        {/* Кнопка для проверки соединения с сервером */}
-        <button onClick={testConnection}>Проверить соединение с сервером</button>
         <form className="LoginPage__container--form" onSubmit={handleSubmit}>
           {isRegistering && (
             <>
