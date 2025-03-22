@@ -1,0 +1,41 @@
+{
+  "login": {
+    "title": "Welcome back",
+    "title-reg": "Register",
+    "subtitle": "Please enter your contact details to connect.",
+    "subtitle-reg": "Please enter your contact details to register.",
+    "email": "Email address",
+    "password": "Password",
+    "remember": "Remember me",
+    "forgot": "Forgot password",
+    "button": "Log in",
+    "button-reg": "Register",
+    "register": "Don't have an account? Sign up",
+    "login": "Have an account? Log in",
+    "success-reg": "Registration successful",
+    "success-log": "Successful login",
+    "server-error": "Server error, please try again later",
+    "name": "Name",
+    "your-name": "Your name"
+  },
+  "table": {
+    "loading-error": "Error loading users",
+    "list": "List of users",
+    "logout": "Log out",
+    "actions": "Actions",
+    "block": "Block",
+    "unblock": "Unblock",
+    "delete": "Delete",
+    "found": "No users found",
+    "blocked": "Blocked",
+    "active": "Active",
+    "select": "Select",
+    "status": "Status",
+    "block-success": "User blocked successfully",
+    "unblock-success": "User unblocked successfully",
+    "delete-success": "User deleted successfully",
+    "name": "Name",
+    "hello": "Hello",
+    "created-at": "Created At"
+  }
+}

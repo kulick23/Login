@@ -1,0 +1,26 @@
+.userTable {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  &__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  &__table {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1rem;
+    th,
+    td {
+      border-bottom: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+  }
+}

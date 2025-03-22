@@ -1,0 +1,190 @@
+@use './breakpoints' as bp;
+
+:root {
+  --background-color: black;
+  --black-color: #080808;
+}
+
+@font-face {
+  font-family: 'manrope';
+  src: url('../src/Assets/Fonts/manrope.light.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'manrope-light';
+  src: url('../src/Assets/Fonts/manrope.thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'manrope-bold';
+  src: url('../src/Assets/Fonts/manrope.extrabold.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+}
+html {
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: 'manrope';
+  color: white;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  max-width: 76.875rem;
+  margin: 0 auto;
+  padding: 0 0.9375rem;
+  background-color: var(--background-color);
+}
+
+ul {
+  list-style: none;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+li {
+  font-family: 'manrope-light';
+  font-size: 1.125rem;
+}
+
+small {
+  font-size: 1.1875rem;
+  font-family: 'manrope-light';
+  color: rgba(189, 189, 189, 1);
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+  color: white;
+  white-space: nowrap;
+  font-size: 1.125rem;
+  display: flex;
+  padding: 15px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  border-radius: 6px;
+  border: 2px solid #fff;
+  &:hover {
+    background-color: white;
+    color: var(--background-color);
+    img {
+      filter: brightness(0);
+    }
+  }
+}
+
+textarea {
+  padding-bottom: 3rem;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+input[type='checkbox'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 3px;
+  border: 1px solid rgba(215, 215, 215, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 1px 1px 0px rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  position: relative;
+
+  &:after {
+    content: '✓';
+    position: absolute;
+    top: -8px;
+    left: 2px;
+    display: inline-block;
+    color: green;
+    font-size: 14px;
+    line-height: 30px;
+    transform: scale(0);
+    transition: 0.3s;
+  }
+
+  &:checked {
+    background-color: transparent;
+
+    &:after {
+      transform: scale(1);
+    }
+  }
+}
+.language-switcher {
+  display: flex;
+  gap: 1rem;
+  justify-self: flex-end;
+  flex-wrap: wrap;
+}
+
+@include bp.tablet {
+  :root {
+    --component-margin: 7.5rem;
+  }
+  h2 {
+    font-size: 2.25rem;
+  }
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  h4 {
+    font-size: 1.25rem;
+  }
+}
+@include bp.phone {
+  :root {
+    --component-margin: 5rem;
+    --arrow-height: 0.7rem;
+  }
+  button {
+    font-size: 0.875rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  h3 {
+    font-size: 1rem;
+  }
+  h4 {
+    font-size: 0.875rem;
+  }
+  p {
+    font-size: 0.875rem;
+  }
+  small {
+    font-size: 0.875rem;
+  }
+}
