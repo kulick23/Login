@@ -14,26 +14,33 @@ export const LoginPage: React.FC = () => {
   const [isRegistering, setIsRegistering] = useState(false);
   const [feedbackMessage, setFeedbackMessage] = useState<string>('');
 
+  const testConnection = async () => {
+    try {
+      const response = await fetch('https://login-production-e7c7.up.railway.app/');
+      const text = await response.text();
+      alert(`Ответ сервера: ${text}`);
+    } catch (error) {
+      alert(`Ошибка: ${error}`);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const endpoint = isRegistering ? 'register' : 'login';
-    const payload = isRegistering
-      ? { name, email, password }
-      : { email, password };
+    const payload = isRegistering ? { name, email, password } : { email, password };
 
     try {
-const response = await fetch(
-  `https://login-production-e7c7.up.railway.app:8080/api/auth/${endpoint}`,
-  {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept-Language': i18n.language,
-    },
-    body: JSON.stringify(payload),
-  }
-)
-
+      const response = await fetch(
+        `https://login-production-e7c7.up.railway.app:8080/api/auth/${endpoint}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept-Language': i18n.language,
+          },
+          body: JSON.stringify(payload),
+        }
+      );
 
       const data = await response.json();
       if (response.ok) {
@@ -54,6 +61,8 @@ const response = await fetch(
       <div className="LoginPage__container">
         <h2>{isRegistering ? t('login.title-reg') : t('login.title')}</h2>
         <p>{isRegistering ? t('login.subtitle-reg') : t('login.subtitle')}</p>
+        {/* Кнопка для проверки соединения с сервером */}
+        <button onClick={testConnection}>Проверить соединение с сервером</button>
         <form className="LoginPage__container--form" onSubmit={handleSubmit}>
           {isRegistering && (
             <>
@@ -75,7 +84,6 @@ const response = await fetch(
             onChange={(e) => setEmail(e.target.value)}
             className="login__input"
           />
-
           <label className="Login__form--title">{t('login.password')}</label>
           <input
             type="password"
@@ -84,7 +92,6 @@ const response = await fetch(
             onChange={(e) => setPassword(e.target.value)}
             className="login__input"
           />
-
           {!isRegistering && (
             <div className="login__options">
               <label>
@@ -100,14 +107,10 @@ const response = await fetch(
               </a>
             </div>
           )}
-
           <button type="submit">
             {isRegistering ? t('login.button-reg') : t('login.button')}
           </button>
-          <a
-            onClick={() => setIsRegistering(!isRegistering)}
-            className="toggle-auth"
-          >
+          <a onClick={() => setIsRegistering(!isRegistering)} className="toggle-auth">
             {isRegistering ? t('login.login') : t('login.register')}
           </a>
         </form>
