@@ -35,19 +35,19 @@ const response = await fetch(
 )
 
 
-     const data = await response.json();
-console.log("Server response:", data);
-
-if (response.ok) {
-  alert(isRegistering ? t('login.success-reg') : t('login.success-log'));
-  localStorage.setItem('token', data.token);
-  localStorage.setItem('userName', data.name);
-  navigate('/users');
-} else {
-  console.error("Registration failed:", data);
-  alert(data.error || "Unknown registration error");
-};
-
+      const data = await response.json();
+      if (response.ok) {
+        alert(isRegistering ? t('login.success-reg') : t('login.success-log'));
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('userName', data.name);
+        navigate('/users');
+      } else {
+        alert(data.error);
+      }
+    } catch (error) {
+      alert(t('login.server-error'));
+    }
+  };
 
   return (
     <div className="LoginPage">
