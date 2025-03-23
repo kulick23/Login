@@ -53,10 +53,11 @@ export const UserTable: React.FC = () => {
 
   const handleBlockSelected = async () => {
     const token = localStorage.getItem('token');
+    const currentUserEmail = localStorage.getItem('userEmail');
     if (!token) return;
 
     for (const email of selectedEmails) {
-      const response = await fetch(`https://login-production-7aff.up.railway.app/api/users/block`, {
+      const response = await fetch('https://login-production-7aff.up.railway.app/api/users/block', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -67,6 +68,14 @@ export const UserTable: React.FC = () => {
       });
       if (!response.ok) {
         alert(t('table.loading-error'));
+        return;
+      }
+
+      if (email === currentUserEmail) {
+        localStorage.removeItem('token');
+        localStorage.removeItem('userName');
+        localStorage.removeItem('userEmail');
+        navigate('/');
         return;
       }
     }
@@ -101,10 +110,11 @@ export const UserTable: React.FC = () => {
 
   const handleDeleteSelected = async () => {
     const token = localStorage.getItem('token');
+    const currentUserEmail = localStorage.getItem('userEmail');
     if (!token) return;
 
     for (const email of selectedEmails) {
-      const response = await fetch(`https://login-production-7aff.up.railway.app/api/users/delete`, {
+      const response = await fetch('https://login-production-7aff.up.railway.app/api/users/delete', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -115,6 +125,14 @@ export const UserTable: React.FC = () => {
       });
       if (!response.ok) {
         alert(t('table.loading-error'));
+        return;
+      }
+
+      if (email === currentUserEmail) {
+        localStorage.removeItem('token');
+        localStorage.removeItem('userName');
+        localStorage.removeItem('userEmail');
+        navigate('/');
         return;
       }
     }
