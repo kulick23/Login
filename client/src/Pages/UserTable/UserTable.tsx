@@ -54,6 +54,7 @@ export const UserTable: React.FC = () => {
   const handleBlockSelected = async () => {
     const token = localStorage.getItem('token');
     const currentUserEmail = localStorage.getItem('userEmail');
+    console.log("Current user email:", currentUserEmail); 
     if (!token) return;
 
     for (const email of selectedEmails) {
@@ -111,6 +112,7 @@ export const UserTable: React.FC = () => {
   const handleDeleteSelected = async () => {
     const token = localStorage.getItem('token');
     const currentUserEmail = localStorage.getItem('userEmail');
+    console.log("Current user email:", currentUserEmail); // проверить что не null
     if (!token) return;
 
     for (const email of selectedEmails) {

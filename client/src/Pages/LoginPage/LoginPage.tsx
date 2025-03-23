@@ -37,7 +37,7 @@ export const LoginPage: React.FC = () => {
         alert(isRegistering ? t('login.success-reg') : t('login.success-log'));
         localStorage.setItem('token', data.token);
         localStorage.setItem('userName', data.name);
-        localStorage.setItem('userEmail', data.email); 
+        localStorage.setItem('userEmail', data.email);
         navigate('/users');
       } else {
         alert(data.error);

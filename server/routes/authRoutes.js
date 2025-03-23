@@ -68,6 +68,7 @@ router.post('/register', async (req, res) => {
           message: messages[lang].registrationSuccess,
           token,
           name: user.name,
+          email: user.email,
         });
       });
     });
@@ -98,7 +99,7 @@ router.post('/login', (req, res) => {
     const token = jwt.sign({ userId: user.id, name: user.name }, 'SECRET_KEY', {
       expiresIn: '1h',
     });
-    res.json({ message: messages[lang].loginSuccess, token, name: user.name });
+    res.json({ message: messages[lang].loginSuccess, token, name: user.name, email: user.email });
   });
 });
 
