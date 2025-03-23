@@ -21,7 +21,7 @@ export const LoginPage: React.FC = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:8080/api/auth/${endpoint}`, // Замените на локальный сервер
+        `https://login-production-7aff.up.railway.app/api/auth/${endpoint}`,
         {
           method: 'POST',
           headers: {
