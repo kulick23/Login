@@ -20,7 +20,7 @@ export const UserTable: React.FC = () => {
       return;
     }
 
-    const response = await fetch('http://localhost:5000/api/users', {
+    const response = await fetch('https://login-production-7aff.up.railway.app/api/users', {
       headers: {
         Authorization: `Bearer ${token}`,
         'Accept-Language': i18n.language,
@@ -56,7 +56,7 @@ export const UserTable: React.FC = () => {
     if (!token) return;
 
     for (const email of selectedEmails) {
-      const response = await fetch(`http://localhost:5000/api/users/block`, {
+      const response = await fetch(`https://login-production-7aff.up.railway.app/api/users/block`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -80,7 +80,7 @@ export const UserTable: React.FC = () => {
     if (!token) return;
 
     for (const email of selectedEmails) {
-      const response = await fetch(`http://localhost:5000/api/users/unblock`, {
+      const response = await fetch(`https://login-production-7aff.up.railway.app/api/users/unblock`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -104,7 +104,7 @@ export const UserTable: React.FC = () => {
     if (!token) return;
 
     for (const email of selectedEmails) {
-      const response = await fetch(`http://localhost:5000/api/users/delete`, {
+      const response = await fetch(`https://login-production-7aff.up.railway.app/api/users/delete`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
