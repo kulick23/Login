@@ -36,6 +36,8 @@
     "delete-success": "User deleted successfully",
     "name": "Name",
     "hello": "Hello",
-    "created-at": "Created At"
+    "created-at": "Created At",
+    "Selectall": "Select all",
+    "Removeall": "Remove all"
   }
 }

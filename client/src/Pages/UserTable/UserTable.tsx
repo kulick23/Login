@@ -112,7 +112,7 @@ export const UserTable: React.FC = () => {
   const handleDeleteSelected = async () => {
     const token = localStorage.getItem('token');
     const currentUserEmail = localStorage.getItem('userEmail');
-    console.log("Current user email:", currentUserEmail); // проверить что не null
+    console.log("Current user email:", currentUserEmail); 
     if (!token) return;
 
     for (const email of selectedEmails) {
@@ -143,6 +143,15 @@ export const UserTable: React.FC = () => {
     fetchUsers();
   };
 
+  const handleSelectAll = () => {
+    if (selectedEmails.length === users.length) {
+      setSelectedEmails([]);
+    } else {
+      const allEmails = users.map((user) => user.email);
+      setSelectedEmails(allEmails);
+    }
+  };
+
   return (
     <div className="userTable">
       <div className="userTable__header">
@@ -158,6 +167,9 @@ export const UserTable: React.FC = () => {
       </div>
 
       <div className="userTable__actions">
+        <button onClick={handleSelectAll}>
+          {selectedEmails.length === users.length ? t('table.Removeall') : t('table.Selectall')}
+        </button>
         <button onClick={handleBlockSelected}>{t('table.block')}</button>
         <button onClick={handleUnblockSelected}>{t('table.unblock')}</button>
         <button onClick={handleDeleteSelected}>{t('table.delete')}</button>
