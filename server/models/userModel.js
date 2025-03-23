@@ -2,7 +2,13 @@ const db = require('../config/db');
 
 const createUser = (name, email, password, callback) => {
   const query = 'INSERT INTO users (name, email, password) VALUES (?, ?, ?)';
-  db.query(query, [name, email, password], callback);
+  db.query(query, [name, email, password], (err) => {
+    if (err) {
+      console.error('Ошибка при создании пользователя:', err);
+      return callback(err);
+    }
+    callback(null);
+  });
 };
 
 const getUserByEmail = (email, callback) => {
